@@ -91,6 +91,19 @@ There are still a few problems with this program.
 * This program doesn't display the amounts to two decimal places. In the next chapter you will
   see the :ref:`Format-Strings` that will do the trick.
 
+  **Check your understanding**
+
+  .. mchoice:: ch07_sentinel_2
+     :practice: T
+     :answer_a: True
+     :answer_b: False
+     :correct: a 
+     :feedback_a: Keep in mind there are multiple ways to stop a while loop, such as a sentinal value.
+     :feedback_b: While loops do not have a set number of times they will iterate, so they will continue until something breaks the loop. Keep this in mind while coding with while loops.
+
+     True or False: A while loop will continue to iterate forever unless it meets a condition to stop.
+
+
 .. index::
     single: validation
     single: input; validating
@@ -112,13 +125,13 @@ When you run the following code, try typing something other than Y or N to see h
 
     def get_yes_or_no(message):
         valid_input = False
+        answer = input(message)
         while not valid_input:
-            answer = input(message)
             answer = answer.upper() # convert to upper case
             if answer == 'Y' or answer == 'N':
                 valid_input = True
             else:
-                print('Please enter Y for yes or N for no.')
+                answer = input('Please enter Y for yes or N for no. \n' + message)
         return answer
 
     response = get_yes_or_no('Do you like lima beans? Y)es or N)o: ')

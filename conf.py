@@ -11,13 +11,14 @@
 # All configuration values have a default; values that are commented out
 # serve to show the default.
 
-import sys, os
+import sys
+import os
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 
-from runestone import runestone_static_dirs, runestone_extensions
+from runestone import runestone_static_dirs, runestone_extensions, setup
 import pkg_resources
 
 
@@ -31,7 +32,8 @@ import pkg_resources
 extensions = ['sphinx.ext.mathjax'] + runestone_extensions()
 
 # Add any paths that contain templates here, relative to this directory.
-templates_path = [pkg_resources.resource_filename('runestone', 'common/project_template/_templates')]
+templates_path = [pkg_resources.resource_filename(
+    'runestone', 'common/project_template/_templates')]
 
 # The suffix of source filenames.
 source_suffix = '.rst'
@@ -42,9 +44,16 @@ source_suffix = '.rst'
 # The master toctree document.
 master_doc = 'index'
 
+# Do not generate extra labels for question text
+generate_component_labels = False
+
 # General information about the project.
 project = u'How to Think Like a Computer Scientist'
 copyright = u'2014 Brad Miller, David Ranum, Created using Runestone Interactive'
+course_description = """Based on the original open source book by Allan Downy and Jeff Elkner. Learn Python, this edition is expanded with additional topics and is fully interactive.  Try examples, answer questions, interactively, right in the book!"""
+key_words = "intro google active learning fun data turtle graphics learn"
+shelf_section = "Intro to Computer Science"
+
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -70,11 +79,11 @@ keep_warnings = True
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
-exclude_patterns = ['ActiveIndexFiles/*','OldIndexAndConfFiles/*','ExtraStuff/*', 'Recursion/*',
-                     'Graphs/*', 'Trees/*', 'AlgorithmAnalysis/*', 'BasicDS/*',
-                     'SortSearch/*','_static/skulpt/doc/*','ErrorHelp/*','Test/*','OverviewForSite/*',
-                     'Appendices/app_*','IntroRecursion/recursioncomplex*','IntroRecursion/recursionexercises.rst',
-                     'IntroRecursion/thinkpyrecursion.rst','Functions/morefunctions.rst','Introduction/introduction.rst']
+exclude_patterns = ['ActiveIndexFiles/*', 'OldIndexAndConfFiles/*', 'ExtraStuff/*', 'Recursion/*',
+                    'Graphs/*', 'Trees/*', 'AlgorithmAnalysis/*', 'BasicDS/*',
+                    'SortSearch/*', '_static/skulpt/doc/*', 'ErrorHelp/*', 'Test/*', 'OverviewForSite/*',
+                    'Appendices/app_*', 'IntroRecursion/recursioncomplex*', 'IntroRecursion/recursionexercises.rst',
+                    'IntroRecursion/thinkpyrecursion.rst', 'Functions/morefunctions.rst', 'Introduction/introduction.rst']
 
 # The reST default role (used for this markup: `text`) to use for all documents.
 #default_role = None
@@ -100,8 +109,8 @@ pygments_style = 'sphinx'
 # A string of reStructuredText that will be included at the beginning of every
 # source file that is read.
 rst_prolog = (
-# For fill-in-the-blank questions, provide a convenient means to indicate a blank.
-"""
+    # For fill-in-the-blank questions, provide a convenient means to indicate a blank.
+    """
 .. |blank| replace:: :blank:`x`
 """
 )
@@ -160,14 +169,15 @@ html_theme_options = {
 #html_style = "style.css"
 
 # Add any paths that contain custom themes here, relative to this directory.
-html_theme_path = [pkg_resources.resource_filename('runestone', 'common/project_template/_templates/plugin_layouts')]
+html_theme_path = [pkg_resources.resource_filename(
+    'runestone', 'common/project_template/_templates/plugin_layouts')]
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
 html_title = 'How to Think like a Computer Scientist: Interactive Edition'
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
-html_short_title ='How to Think Like a Computer Scientist'
+html_short_title = 'How to Think Like a Computer Scientist'
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
@@ -182,7 +192,7 @@ html_short_title ='How to Think Like a Computer Scientist'
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 
-html_static_path = ['./_sources/_static']  + runestone_static_dirs()
+html_static_path = ['./_sources/_static'] + runestone_static_dirs()
 
 # If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
 # using the given strftime format.
@@ -232,21 +242,21 @@ htmlhelp_basename = 'PythonCoursewareProjectdoc'
 # -- Options for LaTeX output --------------------------------------------------
 
 latex_elements = {
-# The paper size ('letterpaper' or 'a4paper').
-#'papersize': 'letterpaper',
+    # The paper size ('letterpaper' or 'a4paper').
+    #'papersize': 'letterpaper',
 
-# The font size ('10pt', '11pt' or '12pt').
-#'pointsize': '10pt',
+    # The font size ('10pt', '11pt' or '12pt').
+    #'pointsize': '10pt',
 
-# Additional stuff for the LaTeX preamble.
-#'preamble': '',
+    # Additional stuff for the LaTeX preamble.
+    #'preamble': '',
 }
 
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('index', 'ProblemSolvingwithAlgorithmsandDataStructures.tex', u'Problem Solving with Algorithms and Data Structures',
-   u'Brad Miller, David Ranum', 'manual'),
+    ('index', 'ProblemSolvingwithAlgorithmsandDataStructures.tex', u'Problem Solving with Algorithms and Data Structures',
+     u'Brad Miller, David Ranum', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -289,10 +299,10 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'PythonCourseware',
-   u'Python Courseware Project',
-   u'Brad Miller, David Ranum',
-   'PythonCoursewareProject', 'One line description of project.', 'Miscellaneous'),
+    ('index', 'PythonCourseware',
+     u'Python Courseware Project',
+     u'Brad Miller, David Ranum',
+     'PythonCoursewareProject', 'One line description of project.', 'Miscellaneous'),
 ]
 
 # Documents to append as an appendix to all manuals.

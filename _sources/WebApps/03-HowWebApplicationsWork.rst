@@ -7,10 +7,10 @@ at all.
 
 Try typing the following URL into your browser:
 
-http://google.com/search?q=Microsoft
+   https://google.com/search?q=Microsoft
 
 You'll get back a page of search results about Microsoft from the Google search engine (at least, you
-will unless Google has changed how it performs searches since the time I wrote this chapter). How did
+will unless Google has changed how it performs searches since this chapter was written). How did
 this happen?
 
 Well, your browser did what it always does when you type in a URL:
@@ -36,7 +36,7 @@ or run a web application to generate a response.
 Anytime you're browsing the web, and you notice that the URL of the page you're viewing has a question
 mark (?), you can be fairly certain that the page was generated "on the fly" by a web application on
 a web server. By the way, the portion of the URL that comes after the ? is called the "query string," and
-contains input for the web application. Try changing the query string by substituting "Firefox" for "Microsoft"
+contains input for the web application. Try changing the **query string** by substituting "Firefox" for "Microsoft"
 to see what I mean.
 
 In summary, a (server-side) web application is a program that is run by a web server to produce output
